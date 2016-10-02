@@ -1,3 +1,6 @@
+#Adhavann Ramalingam
+#Program to implement caching in AWS
+
 from flask import Flask,request,render_template,redirect
 import timeit
 import memcache
@@ -11,6 +14,8 @@ conn = mysql.connector.connect(user='XXXXX', password='password',
                                database='XXXXX')
 cur=conn.cursor()
 memc = memcache.Client(['XXXXXX:portnumber'], debug=1)
+
+#Function to load the webpage while running the application
 @app.route('/')
 def hello_world():
     return render_template("upload.html")
@@ -19,6 +24,7 @@ def hello_world():
 @app.route('/base')
 def base():
     return render_template("base.html")
+
 
 @app.route('/query', methods=['GET','POST'])
 def query():
